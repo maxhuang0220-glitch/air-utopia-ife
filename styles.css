@@ -1,0 +1,1449 @@
+```css
+/* =========================================================
+   AIR UTOPIA
+   In-Flight Entertainment System
+   styles.css
+   ========================================================= */
+
+:root {
+    --navy: #07111f;
+    --navy-2: #0c1b2d;
+    --blue: #1677ff;
+    --blue-light: #4da3ff;
+    --cyan: #55d6ff;
+    --white: #ffffff;
+    --text: #eaf2ff;
+    --muted: #91a4bb;
+    --card: #102238;
+    --card-2: #142b44;
+    --border: rgba(255, 255, 255, 0.09);
+    --danger: #ff5d67;
+    --success: #39d98a;
+    --shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family:
+        Inter,
+        "Segoe UI",
+        Arial,
+        "Noto Sans TC",
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 80% 10%,
+            rgba(22, 119, 255, 0.12),
+            transparent 30%
+        ),
+        var(--navy);
+
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* =========================================================
+   LOGIN
+   ========================================================= */
+
+.login-screen {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(7, 17, 31, 0.96),
+            rgba(10, 32, 57, 0.92)
+        ),
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(77, 163, 255, 0.25),
+            transparent 45%
+        );
+}
+
+.login-box {
+    width: min(460px, 100%);
+
+    padding: 42px;
+
+    border: 1px solid var(--border);
+    border-radius: 24px;
+
+    background: rgba(12, 27, 45, 0.92);
+    backdrop-filter: blur(20px);
+
+    box-shadow: var(--shadow);
+
+    text-align: center;
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: 5px;
+}
+
+.subtitle {
+    margin-top: 6px;
+
+    color: var(--cyan);
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.login-box h1 {
+    margin-top: 35px;
+
+    font-size: 28px;
+}
+
+.login-box > p {
+    margin: 10px 0 25px;
+
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.login-type {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 8px;
+
+    margin-bottom: 20px;
+
+    padding: 5px;
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.login-type-button {
+    padding: 11px;
+
+    border: 0;
+    border-radius: 9px;
+
+    background: transparent;
+
+    color: var(--muted);
+
+    transition: 0.2s;
+}
+
+.login-type-button.active {
+    background: var(--blue);
+    color: white;
+}
+
+#loginForm {
+    text-align: left;
+}
+
+#loginForm label {
+    display: block;
+
+    margin: 15px 0 7px;
+
+    color: #b9c9dc;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+#loginForm input {
+    width: 100%;
+
+    padding: 13px 15px;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+
+    transition: 0.2s;
+}
+
+#loginForm input:focus {
+    border-color: var(--blue-light);
+
+    box-shadow: 0 0 0 3px rgba(22, 119, 255, 0.15);
+}
+
+.primary-button {
+    width: 100%;
+
+    margin-top: 18px;
+    padding: 13px 18px;
+
+    border: 0;
+    border-radius: 10px;
+
+    background: linear-gradient(
+        135deg,
+        var(--blue),
+        #0059d6
+    );
+
+    color: white;
+
+    font-weight: 800;
+    letter-spacing: 1px;
+
+    transition: 0.2s;
+}
+
+.primary-button:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 8px 25px rgba(22, 119, 255, 0.35);
+}
+
+.text-button {
+    margin-top: 18px;
+
+    border: 0;
+    background: transparent;
+
+    color: var(--cyan);
+
+    font-size: 13px;
+}
+
+.message {
+    min-height: 20px;
+
+    margin-top: 15px;
+
+    color: var(--danger);
+
+    font-size: 13px;
+}
+
+/* =========================================================
+   MAIN IFE
+   ========================================================= */
+
+.ife-system {
+    min-height: 100vh;
+
+    display: flex;
+
+    background: var(--navy);
+}
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sidebar {
+    position: fixed;
+
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    width: 245px;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 25px 15px;
+
+    border-right: 1px solid var(--border);
+
+    background:
+        linear-gradient(
+            180deg,
+            #091827,
+            #07111f
+        );
+
+    z-index: 50;
+}
+
+.air-utopia-logo {
+    padding: 5px 15px 25px;
+
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+.air-utopia-logo span {
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--cyan);
+
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.nav-button {
+    width: 100%;
+
+    padding: 13px 15px;
+
+    border: 0;
+    border-radius: 10px;
+
+    background: transparent;
+
+    color: #9eb0c5;
+
+    text-align: left;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+.nav-button:hover {
+    background: rgba(255, 255, 255, 0.05);
+
+    color: white;
+}
+
+.nav-button.active {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(22, 119, 255, 0.25),
+            rgba(22, 119, 255, 0.08)
+        );
+
+    color: white;
+
+    box-shadow:
+        inset 3px 0 0 var(--blue);
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+
+    padding: 15px;
+
+    border-top: 1px solid var(--border);
+}
+
+#userDisplay {
+    margin-bottom: 12px;
+
+    overflow: hidden;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.logout-button {
+    width: 100%;
+
+    padding: 10px;
+
+    border: 1px solid rgba(255, 93, 103, 0.25);
+    border-radius: 8px;
+
+    background: rgba(255, 93, 103, 0.08);
+
+    color: #ff8c93;
+
+    transition: 0.2s;
+}
+
+.logout-button:hover {
+    background: rgba(255, 93, 103, 0.15);
+}
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.main-content {
+    width: calc(100% - 245px);
+
+    margin-left: 245px;
+
+    min-height: 100vh;
+}
+
+/* =========================================================
+   TOP BAR
+   ========================================================= */
+
+.topbar {
+    position: sticky;
+    top: 0;
+
+    height: 76px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 35px;
+
+    border-bottom: 1px solid var(--border);
+
+    background: rgba(7, 17, 31, 0.85);
+
+    backdrop-filter: blur(15px);
+
+    z-index: 40;
+}
+
+.top-brand {
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+.top-subtitle {
+    margin-top: 3px;
+
+    color: var(--muted);
+
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.flight-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+.status-dot {
+    width: 9px;
+    height: 9px;
+
+    display: inline-block;
+
+    border-radius: 50%;
+
+    background: var(--danger);
+}
+
+.status-dot.online {
+    background: var(--success);
+
+    box-shadow:
+        0 0 10px rgba(57, 217, 138, 0.7);
+}
+
+.status-dot.offline {
+    background: var(--danger);
+}
+
+/* =========================================================
+   PAGES
+   ========================================================= */
+
+.page {
+    display: none;
+
+    padding: 35px;
+}
+
+.page.active {
+    display: block;
+
+    animation: pageIn 0.25s ease;
+}
+
+@keyframes pageIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.page-title {
+    margin-bottom: 25px;
+}
+
+.page-title h1 {
+    font-size: 32px;
+}
+
+.page-title p {
+    margin-top: 6px;
+
+    color: var(--muted);
+}
+
+/* =========================================================
+   HOME HERO
+   ========================================================= */
+
+.hero {
+    min-height: 270px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    padding: 35px;
+
+    border: 1px solid var(--border);
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(11, 41, 73, 0.95),
+            rgba(7, 17, 31, 0.85)
+        );
+
+    box-shadow: var(--shadow);
+
+    position: relative;
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 450px;
+    height: 450px;
+
+    right: -150px;
+    top: -250px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(77, 163, 255, 0.2),
+            transparent 70%
+        );
+}
+
+.eyebrow {
+    margin-bottom: 10px;
+
+    color: var(--cyan);
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.hero h1 {
+    font-size: 42px;
+}
+
+.hero p:not(.eyebrow) {
+    margin-top: 10px;
+
+    color: var(--muted);
+}
+
+.hero-flight {
+    position: relative;
+    z-index: 2;
+
+    text-align: right;
+}
+
+.hero-flight strong {
+    display: block;
+
+    font-size: 35px;
+    letter-spacing: 2px;
+}
+
+.hero-flight span {
+    color: var(--muted);
+
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+/* =========================================================
+   DASHBOARD
+   ========================================================= */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-top: 15px;
+}
+
+.info-card {
+    padding: 20px;
+
+    border: 1px solid var(--border);
+    border-radius: 15px;
+
+    background: var(--card);
+}
+
+.info-card span {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+    letter-spacing: 1.5px;
+}
+
+.info-card strong {
+    font-size: 22px;
+}
+
+/* =========================================================
+   SECTION CARD
+   ========================================================= */
+
+.section-card {
+    margin-top: 25px;
+
+    padding: 25px;
+
+    border: 1px solid var(--border);
+    border-radius: 18px;
+
+    background: var(--card);
+}
+
+.section-card h2 {
+    margin-bottom: 18px;
+
+    font-size: 19px;
+}
+
+.quick-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+.quick-card {
+    padding: 22px;
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    background: var(--card-2);
+
+    color: white;
+
+    text-align: left;
+
+    transition: 0.2s;
+}
+
+.quick-card:hover {
+    transform: translateY(-3px);
+
+    border-color: rgba(77, 163, 255, 0.4);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.quick-card > span {
+    display: block;
+
+    margin-bottom: 15px;
+
+    font-size: 30px;
+}
+
+.quick-card strong {
+    display: block;
+
+    font-size: 16px;
+}
+
+.quick-card small {
+    display: block;
+
+    margin-top: 6px;
+
+    color: var(--muted);
+
+    line-height: 1.5;
+}
+
+/* =========================================================
+   MOVIES
+   ========================================================= */
+
+.movie-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(220px, 1fr));
+
+    gap: 20px;
+}
+
+.movie-card {
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+    border-radius: 16px;
+
+    background: var(--card);
+
+    transition: 0.2s;
+}
+
+.movie-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow: var(--shadow);
+}
+
+.movie-thumbnail {
+    height: 125px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #102b4b,
+            #07111f
+        );
+
+    font-size: 42px;
+}
+
+.movie-info {
+    padding: 17px;
+}
+
+.movie-info h3 {
+    margin-bottom: 7px;
+
+    font-size: 16px;
+}
+
+.movie-info p {
+    min-height: 36px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.movie-info button {
+    width: 100%;
+
+    margin-top: 14px;
+    padding: 9px;
+
+    border: 0;
+    border-radius: 8px;
+
+    background: var(--blue);
+
+    color: white;
+
+    font-weight: 700;
+}
+
+/* =========================================================
+   VIDEO PLAYER
+   ========================================================= */
+
+.video-player {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.video-player h2 {
+    margin-bottom: 20px;
+}
+
+.video-player video {
+    width: min(1000px, 95vw);
+    max-height: 75vh;
+
+    border-radius: 10px;
+
+    background: black;
+}
+
+.close-button {
+    position: absolute;
+
+    right: 25px;
+    top: 20px;
+
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid var(--border);
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: white;
+
+    font-size: 18px;
+}
+
+/* =========================================================
+   GAMES
+   ========================================================= */
+
+.game-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(270px, 1fr));
+
+    gap: 20px;
+}
+
+.game-card {
+    min-height: 300px;
+
+    padding: 25px;
+
+    border: 1px solid var(--border);
+    border-radius: 18px;
+
+    background: var(--card);
+}
+
+.game-card h2 {
+    margin-bottom: 20px;
+
+    font-size: 18px;
+}
+
+.game-card input {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    color: white;
+}
+
+.game-card .primary-button {
+    margin-top: 10px;
+}
+
+.game-card p {
+    margin-top: 14px;
+
+    color: var(--muted);
+}
+
+/* Reaction */
+
+.reaction-box {
+    height: 120px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 12px;
+
+    border-radius: 12px;
+
+    background: #172a3f;
+
+    color: white;
+
+    font-weight: 900;
+
+    user-select: none;
+}
+
+.reaction-box.ready {
+    background: #c72c38;
+}
+
+.reaction-box.go {
+    background: #17844f;
+}
+
+/* Secondary button */
+
+.secondary-button {
+    width: 100%;
+
+    margin-top: 15px;
+    padding: 11px;
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    color: white;
+}
+
+/* Tic Tac Toe */
+
+.tic-tac-toe {
+    width: 210px;
+    height: 210px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    margin: auto;
+}
+
+.tic-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+
+    color: white;
+
+    font-size: 32px;
+    font-weight: 900;
+}
+
+.tic-cell:nth-child(3n) {
+    border-right: 0;
+}
+
+.tic-cell:nth-child(n + 7) {
+    border-bottom: 0;
+}
+
+/* =========================================================
+   FLIGHT INFORMATION
+   ========================================================= */
+
+.flight-number {
+    margin-bottom: 20px;
+
+    padding: 25px;
+
+    border: 1px solid var(--border);
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #102c4c,
+            #0c1b2d
+        );
+}
+
+.flight-number span {
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.flight-number strong {
+    display: block;
+
+    margin-top: 6px;
+
+    font-size: 34px;
+}
+
+.flight-data-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+}
+
+.flight-data-grid > div {
+    min-height: 120px;
+
+    padding: 20px;
+
+    border: 1px solid var(--border);
+    border-radius: 15px;
+
+    background: var(--card);
+}
+
+.flight-data-grid span {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+    letter-spacing: 1.5px;
+}
+
+.flight-data-grid strong {
+    font-size: 20px;
+}
+
+/* =========================================================
+   MOVING MAP
+   ========================================================= */
+
+.map-display {
+    position: relative;
+
+    width: 100%;
+    height: 600px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+    border-radius: 20px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(25, 76, 113, 0.5),
+            transparent 60%
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent 0,
+            transparent 49px,
+            rgba(255, 255, 255, 0.04) 50px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent 0,
+            transparent 49px,
+            rgba(255, 255, 255, 0.04) 50px
+        ),
+        #081827;
+}
+
+.map-display::before {
+    content: "LIVE FLIGHT MAP";
+
+    position: absolute;
+
+    left: 20px;
+    top: 20px;
+
+    color: rgba(255, 255, 255, 0.25);
+
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+.aircraft-marker {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(22, 119, 255, 0.2);
+
+    color: var(--cyan);
+
+    font-size: 25px;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(0deg);
+
+    transition:
+        left 0.5s,
+        top 0.5s,
+        transform 0.5s;
+
+    box-shadow:
+        0 0 0 10px rgba(22, 119, 255, 0.05),
+        0 0 25px rgba(22, 119, 255, 0.35);
+}
+
+/* =========================================================
+   DINING
+   ========================================================= */
+
+.dining-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(230px, 1fr));
+
+    gap: 20px;
+}
+
+.menu-card {
+    padding: 25px;
+
+    border: 1px solid var(--border);
+    border-radius: 18px;
+
+    background: var(--card);
+}
+
+.menu-icon {
+    margin-bottom: 15px;
+
+    font-size: 35px;
+}
+
+.menu-card h2 {
+    margin-bottom: 15px;
+}
+
+.menu-card p {
+    padding: 7px 0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+/* =========================================================
+   MAGAZINE
+   ========================================================= */
+
+.magazine-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+.magazine-card {
+    min-height: 220px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    padding: 25px;
+
+    border: 1px solid var(--border);
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(24, 61, 96, 0.8),
+            rgba(10, 25, 42, 0.95)
+        );
+}
+
+.magazine-card span {
+    margin-bottom: auto;
+
+    color: rgba(255, 255, 255, 0.3);
+
+    font-size: 40px;
+    font-weight: 900;
+}
+
+.magazine-card h2 {
+    margin-bottom: 8px;
+}
+
+.magazine-card p {
+    color: var(--muted);
+}
+
+/* =========================================================
+   EMPLOYEE
+   ========================================================= */
+
+.employee-card {
+    max-width: 650px;
+
+    padding: 30px;
+
+    border: 1px solid var(--border);
+    border-radius: 18px;
+
+    background: var(--card);
+}
+
+.employee-card h2 {
+    margin-bottom: 20px;
+}
+
+.employee-card p {
+    margin: 12px 0;
+
+    color: var(--muted);
+}
+
+.employee-card strong {
+    color: white;
+}
+
+.employee-card hr {
+    margin: 25px 0;
+
+    border: 0;
+    border-top: 1px solid var(--border);
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #06101c;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+
+    background: #29415c;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3d6083;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .dashboard-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .flight-data-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 800px) {
+
+    .sidebar {
+        width: 75px;
+
+        padding: 20px 8px;
+    }
+
+    .air-utopia-logo {
+        padding: 5px 5px 20px;
+
+        text-align: center;
+
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+
+    .air-utopia-logo span {
+        font-size: 7px;
+        letter-spacing: 0;
+    }
+
+    .nav-button {
+        padding: 13px 5px;
+
+        text-align: center;
+
+        font-size: 0;
+    }
+
+    .nav-button::first-letter {
+        font-size: 20px;
+    }
+
+    .sidebar-bottom {
+        padding: 8px;
+    }
+
+    #userDisplay {
+        display: none;
+    }
+
+    .main-content {
+        width: calc(100% - 75px);
+
+        margin-left: 75px;
+    }
+
+    .topbar {
+        padding: 0 20px;
+    }
+
+    .page {
+        padding: 25px 20px;
+    }
+
+    .quick-grid,
+    .magazine-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        min-height: 230px;
+
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .hero-flight {
+        margin-top: 30px;
+
+        text-align: left;
+    }
+
+}
+
+@media (max-width: 550px) {
+
+    .login-box {
+        padding: 28px 20px;
+    }
+
+    .dashboard-grid,
+    .flight-data-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding: 25px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .page-title h1 {
+        font-size: 27px;
+    }
+
+    .top-subtitle {
+        display: none;
+    }
+
+    .flight-status {
+        font-size: 10px;
+    }
+
+    .map-display {
+        height: 450px;
+    }
+
+}
+```
