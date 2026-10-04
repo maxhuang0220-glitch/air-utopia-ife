@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="AIR UTOPIA In-Flight Entertainment System"
+    >
+
+    <title>AIR UTOPIA | In-Flight Entertainment</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         LOGIN
+    ========================== -->
+
+    <div id="loginScreen" class="login-screen">
+
+        <div class="login-box">
+
+            <div class="logo">
+                AIR UTOPIA
+            </div>
+
+            <div class="subtitle">
+                IN-FLIGHT ENTERTAINMENT
+            </div>
+
+            <h1>Welcome Aboard</h1>
+
+            <p>
+                Please sign in to access the Air Utopia
+                entertainment system.
+            </p>
+
+            <div class="login-type">
+
+                <button
+                    id="passengerLogin"
+                    class="login-type-button active"
+                >
+                    Passenger
+                </button>
+
+                <button
+                    id="employeeLogin"
+                    class="login-type-button"
+                >
+                    Employee
+                </button>
+
+            </div>
+
+            <form id="loginForm">
+
+                <label for="email">
+                    Email
+                </label>
+
+                <input
+                    id="email"
+                    type="email"
+                    placeholder="Passenger email"
+                    required
+                >
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    id="password"
+                    type="password"
+                    placeholder="Password"
+                    required
+                >
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                >
+                    SIGN IN
+                </button>
+
+            </form>
+
+            <button
+                id="registerButton"
+                class="text-button"
+            >
+                Create Passenger Account
+            </button>
+
+            <div
+                id="loginMessage"
+                class="message"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         MAIN IFE
+    ========================== -->
+
+    <div
+        id="ifeSystem"
+        class="ife-system hidden"
+    >
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="air-utopia-logo">
+                AIR UTOPIA
+
+                <span>
+                    IFE SYSTEM
+                </span>
+            </div>
+
+            <nav>
+
+                <button
+                    class="nav-button active"
+                    data-page="home"
+                >
+                    🏠 Home
+                </button>
+
+                <button
+                    class="nav-button"
+                    data-page="movies"
+                >
+                    🎬 Movies
+                </button>
+
+                <button
+                    class="nav-button"
+                    data-page="games"
+                >
+                    🎮 Games
+                </button>
+
+                <button
+                    class="nav-button"
+                    data-page="flight"
+                >
+                    ✈ Flight Information
+                </button>
+
+                <button
+                    class="nav-button"
+                    data-page="map"
+                >
+                    🗺 Moving Map
+                </button>
+
+                <button
+                    class="nav-button"
+                    data-page="dining"
+                >
+                    🍱 Dining
+                </button>
+
+                <button
+                    class="nav-button"
+                    data-page="magazine"
+                >
+                    📖 Magazine
+                </button>
+
+                <button
+                    id="employeeMenu"
+                    class="nav-button hidden"
+                    data-page="employee"
+                >
+                    👨‍✈️ Employee
+                </button>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <div id="userDisplay">
+                    Passenger
+                </div>
+
+                <button
+                    id="logoutButton"
+                    class="logout-button"
+                >
+                    Sign Out
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="main-content">
+
+            <!-- TOP BAR -->
+
+            <header class="topbar">
+
+                <div>
+
+                    <div class="top-brand">
+                        AIR UTOPIA
+                    </div>
+
+                    <div class="top-subtitle">
+                        IN-FLIGHT ENTERTAINMENT SYSTEM
+                    </div>
+
+                </div>
+
+                <div class="flight-status">
+
+                    <span
+                        id="geofsStatus"
+                        class="status-dot offline"
+                    ></span>
+
+                    <span id="geofsText">
+                        GeoFS Offline
+                    </span>
+
+                </div>
+
+            </header>
+
+
+            <!-- =====================
+                 HOME
+            ====================== -->
+
+            <section
+                id="home"
+                class="page active"
+            >
+
+                <div class="hero">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            AIR UTOPIA
+                        </p>
+
+                        <h1>
+                            Welcome Aboard
+                        </h1>
+
+                        <p>
+                            Sit back, relax and enjoy your flight.
+                        </p>
+
+                    </div>
+
+                    <div class="hero-flight">
+
+                        <strong id="homeFlight">
+                            UTP001
+                        </strong>
+
+                        <span>
+                            AIR UTOPIA
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-grid">
+
+                    <div class="info-card">
+
+                        <span>
+                            ALTITUDE
+                        </span>
+
+                        <strong id="homeAltitude">
+                            —
+                        </strong>
+
+                    </div>
+
+                    <div class="info-card">
+
+                        <span>
+                            SPEED
+                        </span>
+
+                        <strong id="homeSpeed">
+                            —
+                        </strong>
+
+                    </div>
+
+                    <div class="info-card">
+
+                        <span>
+                            HEADING
+                        </span>
+
+                        <strong id="homeHeading">
+                            —
+                        </strong>
+
+                    </div>
+
+                    <div class="info-card">
+
+                        <span>
+                            FLIGHT PHASE
+                        </span>
+
+                        <strong id="homePhase">
+                            PARKED
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="section-card">
+
+                    <h2>
+                        Featured Entertainment
+                    </h2>
+
+                    <div class="quick-grid">
+
+                        <button
+                            class="quick-card"
+                            data-page-target="movies"
+                        >
+                            <span>🎬</span>
+                            <strong>Movies</strong>
+                            <small>
+                                Watch your selected entertainment
+                            </small>
+                        </button>
+
+                        <button
+                            class="quick-card"
+                            data-page-target="games"
+                        >
+                            <span>🎮</span>
+                            <strong>Games</strong>
+                            <small>
+                                Play during your flight
+                            </small>
+                        </button>
+
+                        <button
+                            class="quick-card"
+                            data-page-target="flight"
+                        >
+                            <span>✈</span>
+                            <strong>Flight Information</strong>
+                            <small>
+                                Live flight status
+                            </small>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================
+                 MOVIES
+            ====================== -->
+
+            <section
+                id="movies"
+                class="page"
+            >
+
+                <div class="page-title">
+
+                    <h1>
+                        Movies
+                    </h1>
+
+                    <p>
+                        Air Utopia Entertainment
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="movieGrid"
+                    class="movie-grid"
+                >
+
+                    <!-- JavaScript inserts movies -->
+
+                </div>
+
+
+                <div
+                    id="videoPlayer"
+                    class="video-player hidden"
+                >
+
+                    <button
+                        id="closePlayer"
+                        class="close-button"
+                    >
+                        ✕
+                    </button>
+
+                    <h2 id="videoTitle">
+                        Movie
+                    </h2>
+
+                    <video
+                        id="movieVideo"
+                        controls
+                        playsinline
+                    ></video>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================
+                 GAMES
+            ====================== -->
+
+            <section
+                id="games"
+                class="page"
+            >
+
+                <div class="page-title">
+
+                    <h1>
+                        Game Center
+                    </h1>
+
+                    <p>
+                        Entertainment for your journey
+                    </p>
+
+                </div>
+
+
+                <div class="game-grid">
+
+                    <div class="game-card">
+
+                        <h2>
+                            ⚡ Reaction Test
+                        </h2>
+
+                        <div
+                            id="reactionBox"
+                            class="reaction-box"
+                        >
+                            PRESS START
+                        </div>
+
+                        <button
+                            id="reactionStart"
+                            class="primary-button"
+                        >
+                            START
+                        </button>
+
+                        <p id="reactionResult">
+                            —
+                        </p>
+
+                    </div>
+
+
+                    <div class="game-card">
+
+                        <h2>
+                            🔢 Guess 1–10
+                        </h2>
+
+                        <input
+                            id="guessInput"
+                            type="number"
+                            min="1"
+                            max="10"
+                            placeholder="1–10"
+                        >
+
+                        <button
+                            id="guessButton"
+                            class="primary-button"
+                        >
+                            GUESS
+                        </button>
+
+                        <p id="guessResult">
+                            Guess the number!
+                        </p>
+
+                    </div>
+
+
+                    <div class="game-card">
+
+                        <h2>
+                            ❌ Tic-Tac-Toe
+                        </h2>
+
+                        <div
+                            id="ticTacToe"
+                            class="tic-tac-toe"
+                        ></div>
+
+                        <p id="ticTacToeStatus">
+                            Your turn
+                        </p>
+
+                        <button
+                            id="newGame"
+                            class="secondary-button"
+                        >
+                            NEW GAME
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================
+                 FLIGHT INFORMATION
+            ====================== -->
+
+            <section
+                id="flight"
+                class="page"
+            >
+
+                <div class="page-title">
+
+                    <h1>
+                        Flight Information
+                    </h1>
+
+                    <p>
+                        Live GeoFS flight data
+                    </p>
+
+                </div>
+
+
+                <div class="flight-number">
+
+                    <span>
+                        FLIGHT
+                    </span>
+
+                    <strong id="flightNumber">
+                        UTP001
+                    </strong>
+
+                </div>
+
+
+                <div class="flight-data-grid">
+
+                    <div>
+                        <span>
+                            LATITUDE
+                        </span>
+                        <strong id="latitude">
+                            —
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>
+                            LONGITUDE
+                        </span>
+                        <strong id="longitude">
+                            —
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>
+                            ALTITUDE
+                        </span>
+                        <strong id="altitude">
+                            —
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>
+                            GROUND SPEED
+                        </span>
+                        <strong id="groundSpeed">
+                            —
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>
+                            HEADING
+                        </span>
+                        <strong id="heading">
+                            —
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>
+                            MACH
+                        </span>
+                        <strong id="mach">
+                            —
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>
+                            PHASE
+                        </span>
+                        <strong id="flightPhase">
+                            —
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>
+                            LAST UPDATE
+                        </span>
+                        <strong id="lastUpdate">
+                            —
+                        </strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================
+                 MOVING MAP
+            ====================== -->
+
+            <section
+                id="map"
+                class="page"
+            >
+
+                <div class="page-title">
+
+                    <h1>
+                        Moving Map
+                    </h1>
+
+                    <p>
+                        Live aircraft position
+                    </p>
+
+                </div>
+
+                <div
+                    id="mapDisplay"
+                    class="map-display"
+                >
+
+                    <div
+                        id="aircraftMarker"
+                        class="aircraft-marker"
+                    >
+                        ✈
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================
+                 DINING
+            ====================== -->
+
+            <section
+                id="dining"
+                class="page"
+            >
+
+                <div class="page-title">
+
+                    <h1>
+                        Dining
+                    </h1>
+
+                    <p>
+                        Air Utopia onboard menu
+                    </p>
+
+                </div>
+
+
+                <div class="dining-grid">
+
+                    <article class="menu-card">
+
+                        <div class="menu-icon">
+                            🇹🇼
+                        </div>
+
+                        <h2>
+                            Taiwanese
+                        </h2>
+
+                        <p>
+                            Beef noodle soup
+                        </p>
+
+                        <p>
+                            Seasonal fruit
+                        </p>
+
+                        <p>
+                            Taiwanese tea
+                        </p>
+
+                    </article>
+
+
+                    <article class="menu-card">
+
+                        <div class="menu-icon">
+                            🇯🇵
+                        </div>
+
+                        <h2>
+                            Japanese
+                        </h2>
+
+                        <p>
+                            Salmon rice
+                        </p>
+
+                        <p>
+                            Miso soup
+                        </p>
+
+                        <p>
+                            Green tea
+                        </p>
+
+                    </article>
+
+
+                    <article class="menu-card">
+
+                        <div class="menu-icon">
+                            🍝
+                        </div>
+
+                        <h2>
+                            Western
+                        </h2>
+
+                        <p>
+                            Chicken pasta
+                        </p>
+
+                        <p>
+                            Fresh salad
+                        </p>
+
+                        <p>
+                            Dessert
+                        </p>
+
+                    </article>
+
+
+                    <article class="menu-card">
+
+                        <div class="menu-icon">
+                            🌱
+                        </div>
+
+                        <h2>
+                            Vegetarian
+                        </h2>
+
+                        <p>
+                            Vegetable curry
+                        </p>
+
+                        <p>
+                            Steamed rice
+                        </p>
+
+                        <p>
+                            Fresh fruit
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================
+                 MAGAZINE
+            ====================== -->
+
+            <section
+                id="magazine"
+                class="page"
+            >
+
+                <div class="page-title">
+
+                    <h1>
+                        Air Utopia Magazine
+                    </h1>
+
+                    <p>
+                        Discover the world of Air Utopia
+                    </p>
+
+                </div>
+
+
+                <div class="magazine-grid">
+
+                    <article class="magazine-card">
+
+                        <span>
+                            01
+                        </span>
+
+                        <h2>
+                            Welcome to Utopia
+                        </h2>
+
+                        <p>
+                            Discover the story behind Air Utopia.
+                        </p>
+
+                    </article>
+
+
+                    <article class="magazine-card">
+
+                        <span>
+                            02
+                        </span>
+
+                        <h2>
+                            Our Fleet
+                        </h2>
+
+                        <p>
+                            Explore the Air Utopia fleet.
+                        </p>
+
+                    </article>
+
+
+                    <article class="magazine-card">
+
+                        <span>
+                            03
+                        </span>
+
+                        <h2>
+                            Destinations
+                        </h2>
+
+                        <p>
+                            Explore our virtual network.
+                        </p>
+
+                    </article>
+
+
+                    <article class="magazine-card">
+
+                        <span>
+                            04
+                        </span>
+
+                        <h2>
+                            Behind the Flight
+                        </h2>
+
+                        <p>
+                            Discover the people behind every flight.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================
+                 EMPLOYEE
+            ====================== -->
+
+            <section
+                id="employee"
+                class="page"
+            >
+
+                <div class="page-title">
+
+                    <h1>
+                        Employee Portal
+                    </h1>
+
+                    <p>
+                        AIR UTOPIA STAFF
+                    </p>
+
+                </div>
+
+
+                <div class="employee-card">
+
+                    <h2>
+                        Employee Access
+                    </h2>
+
+                    <p>
+                        Account:
+                        <strong id="employeeName">
+                            —
+                        </strong>
+                    </p>
+
+                    <p>
+                        Role:
+                        <strong id="employeeRole">
+                            —
+                        </strong>
+                    </p>
+
+                    <hr>
+
+                    <p>
+                        Employee accounts are issued by
+                        Air Utopia administration.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="app.js"></script>
+
+</body>
+</html>
